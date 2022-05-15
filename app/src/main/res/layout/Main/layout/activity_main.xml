@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main.MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="150dp"
+        android:text="饿了团登录"
+        android:textColor="@color/black"
+        android:textSize="35sp" />
+
+    <EditText
+        android:id="@+id/login_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="210dp"
+        android:background="@drawable/login_edit"
+        android:drawableLeft="@drawable/user"
+        android:hint="@string/cin_user"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="275dp"
+        android:background="@drawable/login_edit"
+        android:drawableLeft="@drawable/password"
+        android:hint="@string/cin_password"
+        android:textColorHint="#000000" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="100dp"
+        android:layout_marginTop="350dp"
+        android:background="@drawable/login_button"
+        android:text="登录" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#1E90FF"
+        android:text="无法登录？" />
+
+    <TextView
+        android:id="@+id/goto_register_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#1E90FF"
+        android:text="新用户注册" />
+
+</RelativeLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/QQ_backGround">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp" >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="张三"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:background="@color/bgblue"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <ListView
+            android:id="@+id/msg_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null"
+            android:dividerHeight="7dp"
+            android:stackFromBottom="false"
+            android:transcriptMode="alwaysScroll"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:padding="3dp">
+
+        <EditText
+            android:id="@+id/input_text"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@drawable/input_textview"
+            android:gravity="left"
+            android:textColor="@color/QQ_fontColor"
+            android:hint="Type message here"
+            android:maxLines="2"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/send"
+            android:padding="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/bgblue"
+            android:text="Send"
+
+            android:textAllCaps="false"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+</LinearLayout>

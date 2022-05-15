@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/header"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/waifu_6"
+            android:src="@drawable/circle_images_in_message"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="10dp"
+            android:paddingEnd="10dp">
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/last_massage"
+                    android:layout_width="280sp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/name"
+                    android:layout_toRightOf="@+id/header"
+                    android:text="last_massage"
+                    android:textColor="#999999"
+                    android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/last_massage_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/name"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="right"
+                    android:layout_toRightOf="@+id/last_massage"
+                    android:text="00:00" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/header"-->
+<!--        android:layout_width="50dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:background="@drawable/waifu_6"-->
+<!--        android:src="@drawable/circle_images_in_message" />-->
+
+
+
+
+
+
+
+</RelativeLayout>

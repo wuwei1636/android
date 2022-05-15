@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.henu.eltfood">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/bread"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
+        <activity
+            android:name=".Front.AddFoods"
+            android:exported="false" />
+        <activity
+            android:name=".Front.FrontConsumerOrder"
+            android:exported="false" />
+        <activity
+            android:name=".Front.FrontManage"
+            android:exported="false" />
+        <activity
+            android:name=".Front.FrontDrinks"
+            android:exported="false" />
+        <activity
+            android:name=".Front.FrontFood"
+            android:exported="false" />
+        <activity
+            android:name=".Main.First_viewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Main.register_view"
+            android:exported="false" />
+        <activity
+            android:name=".MyInformation.Myinfoset"
+            android:exported="false" />
+        <activity
+            android:name=".MyInformation.Myinfosafe"
+            android:exported="false" />
+        <activity
+            android:name=".MyInformation.Myinfospace"
+            android:exported="false" />
+        <activity
+            android:name=".MyInformation.Myinfoname"
+            android:exported="false" />
+        <activity android:name=".Message.chat.ChatActivity"
+            />
+        <activity
+            android:name=".Main.MainActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Recommend.ShopOnline" />
+    </application>
+
+</manifest>

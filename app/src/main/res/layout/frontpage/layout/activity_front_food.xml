@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Front.FrontFood"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#00BFFF">
+
+        <ImageView
+            android:id="@+id/food_back_home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="-40dp"
+            android:gravity="center"
+            android:text="美食"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/main_food"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="主食"/>
+            <Button
+                android:id="@+id/dish"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="小菜"/>
+            <Button
+                android:id="@+id/little_food"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="小吃"/>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/front_listview_food"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

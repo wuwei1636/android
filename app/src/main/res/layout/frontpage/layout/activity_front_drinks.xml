@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Front.FrontDrinks"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#00BFFF">
+
+        <ImageView
+            android:id="@+id/drink_back_home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="-40dp"
+            android:gravity="center"
+            android:text="饮料"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/front_milk"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="牛奶"/>
+            <Button
+                android:id="@+id/front_juice"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="果汁"/>
+            <Button
+                android:id="@+id/front_soda"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="汽水"/>
+            <Button
+                android:id="@+id/front_liquor"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="酒"/>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/front_listview_drink"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

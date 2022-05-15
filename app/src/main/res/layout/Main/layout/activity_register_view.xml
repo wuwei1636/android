@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main.register_view">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="80dp"
+        android:src="@drawable/bread" />
+
+    <EditText
+        android:id="@+id/register_name"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="200dp"
+        android:hint="请输入账号"
+        android:background="@drawable/login_edit" />
+
+    <EditText
+        android:id="@+id/register_password1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="270dp"
+        android:hint="请输入密码"
+        android:background="@drawable/login_edit" />
+
+    <EditText
+        android:id="@+id/register_password2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="340dp"
+        android:hint="请再次输入密码"
+        android:background="@drawable/login_edit" />
+
+    <EditText
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="410dp"
+        android:hint="验证码"
+        android:background="@drawable/login_edit" />
+    <ImageView
+        android:layout_width="130dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="410dp"
+        android:layout_marginLeft="230dp"
+        android:src="@color/purple_200"
+        />
+
+    <Button
+        android:id="@+id/back_to_login"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="50dp"
+        android:layout_marginTop="480dp"
+        android:background="@drawable/register_button"
+        android:text="返回"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="140dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="215dp"
+        android:layout_marginTop="480dp"
+        android:textSize="20sp"
+        android:text="注册"
+        android:background="@drawable/register_button" />
+
+</RelativeLayout>
