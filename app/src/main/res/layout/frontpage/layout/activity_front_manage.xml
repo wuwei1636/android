@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Front.FrontManage"
+    tools:context=".Front.GoodsManager.FrontManage"
     android:orientation="vertical">
 
     <LinearLayout
@@ -41,9 +41,8 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/front_listview_manage"
+        android:id="@+id/front_manage_listview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 
 </LinearLayout>

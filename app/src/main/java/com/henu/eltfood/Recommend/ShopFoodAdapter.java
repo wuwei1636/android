@@ -52,7 +52,7 @@ public class ShopFoodAdapter extends BaseAdapter
         Button button_add = convertView.findViewById(R.id.food_count_add);
         Button button_sub = convertView.findViewById(R.id.food_count_sub);
 
-        food_image.setImageResource(tpfood.FoodImageId);
+        food_image.setImageBitmap(tpfood.Img);
         food_description.setText(tpfood.FoodDescription);
         food_price.setText(String.valueOf(tpfood.price));
         food_count.setText(String.valueOf(tpfood.count));
@@ -81,4 +81,3 @@ public class ShopFoodAdapter extends BaseAdapter
         return convertView;
     }
 }
-

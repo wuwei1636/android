@@ -4,147 +4,156 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<!--    头部信息  头像，设置-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_weight="1"
-        android:background="@drawable/border2"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
-
-            <com.henu.eltfood.MyInformation.CircleImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:src="@drawable/firname" />
-
-            <TextView
-                android:id="@+id/mname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:text="玛卡巴卡"
-                android:textSize="23dp" />
-        </LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
 
-        <TextView
-            android:id="@+id/shezhi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:gravity="right"
-            android:clickable="true"
-            android:text="设置  客服" />
 
-    </LinearLayout>
-
-<!--    中间信息-->
+    <!--    头部信息  头像，设置-->
     <LinearLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="121dp"
-        android:orientation="horizontal">
-
+        android:background="@drawable/background_gradient"
+        android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="120dp"
+            android:padding="20dp"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/shoucang" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.henu.eltfood.MyInformation.CircleImageView
+                    android:id="@+id/MyinfImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/firname" />
+
+                <TextView
+                    android:id="@+id/MyinfNickName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="玛卡巴卡"
+                    android:textColor="@color/white"
+                    android:textSize="25dp" />
+            </LinearLayout>
 
             <TextView
-                android:gravity="center"
-                android:textSize="10dp"
-                android:text="收藏"
-                android:layout_width="50dp"
-                android:layout_height="20dp" />
+                android:id="@+id/MyinfSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:gravity="right"
+                android:clickable="true"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:text="设置  客服" />
+
         </LinearLayout>
 
+        <!--    中间信息-->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/dingyue" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <TextView
-                android:gravity="center"
-                android:textSize="10dp"
-                android:text="订阅店铺"
-                android:layout_width="50dp"
-                android:layout_height="20dp" />
-        </LinearLayout>
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/shoucang" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+                <TextView
+                    android:gravity="center"
+                    android:textSize="10dp"
+                    android:text="收藏"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp" />
+            </LinearLayout>
 
-            <ImageView
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/zuji" />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/dingyue" />
 
-            <TextView
-                android:gravity="center"
-                android:textSize="10dp"
-                android:text="足迹"
-                android:layout_width="60dp"
-                android:layout_height="20dp" />
-        </LinearLayout>
+                <TextView
+                    android:gravity="center"
+                    android:textSize="10dp"
+                    android:text="订阅店铺"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp" />
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="20dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/hongbaoka" />
+                <ImageView
 
-            <TextView
-                android:gravity="center"
-                android:textSize="10dp"
-                android:text="红包卡券"
-                android:layout_width="50dp"
-                android:layout_height="20dp" />
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/zuji" />
+
+                <TextView
+                    android:gravity="center"
+                    android:textSize="10dp"
+                    android:text="足迹"
+                    android:layout_width="60dp"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/hongbaoka" />
+
+                <TextView
+                    android:gravity="center"
+                    android:textSize="10dp"
+                    android:text="红包卡券"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
-<!--下面的信息-->
+    <!--下面的信息-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="130dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/border_radius"
         android:orientation="vertical">
 
@@ -171,11 +180,12 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="15dp"
+            android:padding="5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:id="@+id/myinfall"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -190,12 +200,34 @@
                 <TextView
                     android:gravity="center"
                     android:textSize="10dp"
+                    android:text="全部"
+                    android:layout_width="50dp"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/myinfpay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/daishiyong" />
+
+                <TextView
+                    android:gravity="center"
+                    android:textSize="10dp"
                     android:text="待付款"
                     android:layout_width="50dp"
                     android:layout_height="20dp" />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/myinfshou"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -216,26 +248,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/daishiyong" />
-
-                <TextView
-                    android:gravity="center"
-                    android:textSize="10dp"
-                    android:text="待使用"
-                    android:layout_width="50dp"
-                    android:layout_height="20dp" />
-            </LinearLayout>
-
-            <LinearLayout
+                android:id="@+id/myinfcomment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -256,6 +269,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/myinftui"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
@@ -277,5 +291,44 @@
 
         </LinearLayout>
     </LinearLayout>
+    <!--新添加-->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:fillViewport="true"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="100dp"
+                           android:textSize="25sp"
+                           android:text=" 广告位招租"
+                           android:textAlignment="center"
+                           android:textColor="@color/logoutred"
+                           android:background="@drawable/border_radius"/>-->
+                <TextView
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="25sp"
+                    android:layout_marginTop="5dp"
+                    android:text=" 添加店铺  >"
+                    android:textColor="@color/black"
+                    android:background="@drawable/border_radius"/>
 
+                <TextView
+                    android:padding="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="25sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
+                    android:text=" 开通会员  >"
+                    android:background="@drawable/border_radius"/>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
 </RelativeLayout>

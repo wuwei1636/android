@@ -35,6 +35,7 @@
         android:layout_marginTop="275dp"
         android:background="@drawable/login_edit"
         android:drawableLeft="@drawable/password"
+        android:inputType="textPassword"
         android:hint="@string/cin_password"
         android:textColorHint="#000000" />
 

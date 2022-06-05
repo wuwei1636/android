@@ -1,6 +1,15 @@
 <resources>
-    <string name="app_name">宇航员</string>
+    <string name="app_name">饿了团</string>
     <string name="cin_user">请输入账号</string>
     <string name="cin_password">请输入密码</string>
     <string name="tips">今日天气晴，温度17~30℃，事宜吃凉爽点的食物！</string>
+    <array name="sorts_name">
+        <item>主食</item>
+        <item>小菜</item>
+        <item>小吃</item>
+        <item>牛奶</item>
+        <item>果汁</item>
+        <item>汽水</item>
+        <item>酒类</item>
+    </array>
 </resources>

@@ -30,7 +30,7 @@
         android:layout_height="50dp"
         android:layout_gravity="bottom"
         android:scaleX="-1"
-        android:background="@drawable/waifu"
+        android:background="@drawable/background"
         android:src="@drawable/circle_images" />
 
 

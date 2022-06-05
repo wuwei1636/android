@@ -1,6 +1,7 @@
 package com.henu.eltfood.Message.chat;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,35 +10,77 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.henu.eltfood.R;
+import com.hyphenate.chat.EMMessage;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class MassageListAdapter extends BaseAdapter {
-    private Context context;
+    private static final int TYPE_RECEIVE = 0;
+    private static final int TYPE_SEND = 1;
 
-    public void setMassageList(List<Massage> massageList) {
-        this.massageList = massageList;
+    private Context context;
+    private ArrayList<EMMessage> emMessages;
+    private String myName;
+
+    private Bitmap myImg;
+
+    private Bitmap friendImg;
+
+    public Bitmap getMyImg() {
+        return myImg;
     }
 
-    private List<Massage> massageList;
+    public void setMyImg(Bitmap myImg) {
+        this.myImg = myImg;
+    }
+
+    public Bitmap getFriendImg() {
+        return friendImg;
+    }
+
+    public void setFriendImg(Bitmap friendImg) {
+        this.friendImg = friendImg;
+    }
+
+
+    public Context getContext() {
+        return context;
+    }
+
+    public ArrayList<EMMessage> getEmMessages() {
+        return emMessages;
+    }
+
+    public void setEmMessages(ArrayList<EMMessage> emMessages) {
+        this.emMessages = emMessages;
+    }
+
+    public String getMyName() {
+        return myName;
+    }
+
+    public void setMyName(String myName) {
+        this.myName = myName;
+    }
 
     public void setContext(Context context) {
         this.context = context;
     }
 
-    public MassageListAdapter(Context context, List<Massage> massageList) {
+    public MassageListAdapter(Context context, ArrayList<EMMessage> emMessages, String myName) {
         this.context = context;
-        this.massageList = massageList;
+        this.emMessages = emMessages;
+        this.myName = myName;
     }
 
     @Override
     public int getCount() {
-        return massageList.size();
+        return emMessages.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return massageList.get(i);
+        return emMessages.get(i);
     }
 
     @Override
@@ -48,12 +91,19 @@ public class MassageListAdapter extends BaseAdapter {
     // getItemViewType 和 getViewTypeCount 很重要 如果不重写，会发生子项错位
     @Override
     public int getItemViewType(int i) {
-        return massageList.get(i).getType();
+        EMMessage emMessage = emMessages.get(i);
+        String from = emMessage.getFrom();//消息来源
+        if(!from.equals(myName)){//对方发的消息，放左边
+            return TYPE_RECEIVE;
+        }else {
+            return TYPE_SEND;
+        }
     }
     @Override
     public int getViewTypeCount() {
         return 2;
     }
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         ViewHolder viewHolder = null;
@@ -61,7 +111,7 @@ public class MassageListAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();// 打包view
             LayoutInflater layoutInflater = LayoutInflater.from(this.context);
 
-            if(getItemViewType(i) == Massage.TYPE_RECEIVED) {
+            if(getItemViewType(i) == TYPE_RECEIVE) {
                 // 左视图
                 view = layoutInflater.inflate(R.layout.chat_item_left,null);
             }else {
@@ -77,23 +127,44 @@ public class MassageListAdapter extends BaseAdapter {
         }
         // 为当前view各组件 装载数据，通过 viewHolder实现
 
-        Massage massage = massageList.get(i);
-        viewHolder.massage.setText(massage.getContent());
-        viewHolder.header.setBackgroundResource(massage.getHeader());
+        EMMessage massage = emMessages.get(i);
+        viewHolder.massage.setText(gao(massage.getBody().toString()));
+//        viewHolder.header.setBackgroundResource(R.drawable.waifu_6);
+
+        if(getItemViewType(i) == TYPE_RECEIVE)
+            viewHolder.header.setImageBitmap(friendImg);
+        else if(getItemViewType(i) == TYPE_SEND)
+            viewHolder.header.setImageBitmap(myImg);
+//        view.invalidate();
         return view;
     }
+
+    /**
+     * 消除 txt:"···”
+     * @param s
+     * @return
+     */
+    private String gao(String s) {
+        String str = null;
+        if(s.length() < 5) str = s;
+        if(s.charAt(0) == 't' && s.charAt(1) == 'x' && s.charAt(2) == 't'
+                && s.charAt(3) == ':' && s.charAt(4) == '\"' && s.charAt(s.length() - 1) == '\"')
+            str = s.substring(5,s.length() - 1);
+        return str;
+    }
+
     class ViewHolder{
         ImageView header;
         TextView massage;
     }
 
-    public void addMassage(Massage massage) {
-        massageList.add(massage);
+    public void addMassage(EMMessage massage) {
+        emMessages.add(massage);
         return;
     }
 
     public String getLastMassageContent() {
         int position = getCount() - 1;
-        return massageList.get(position).getContent();
+        return emMessages.get(position).getBody().toString();
     }
 }

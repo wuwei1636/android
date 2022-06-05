@@ -10,17 +10,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.henu.eltfood.DataClass.Food;
 import com.henu.eltfood.R;
 
 import java.util.List;
 
 public class FoodAdapter extends BaseAdapter {
-    private List<FoodInformation> list;
+    private List<Food> list;
     private Context context;
+    private FrontFood frontFood;
+    private FrontDrinks frontDrinks;
 
-    public FoodAdapter(Context context, List<FoodInformation> list) {
+    public FoodAdapter(Context context, List<Food> list, FrontFood frontFood) {
+        frontDrinks = null;
         this.list = list;
         this.context = context;
+        this.frontFood = frontFood;
+    }
+
+    public FoodAdapter(Context context, List<Food> list, FrontDrinks frontDrinks) {
+        frontFood = null;
+        this.list = list;
+        this.context = context;
+        this.frontDrinks = frontDrinks;
     }
 
     @Override
@@ -29,7 +41,7 @@ public class FoodAdapter extends BaseAdapter {
     }
 
     @Override
-    public FoodInformation getItem(int i) {
+    public Food getItem(int i) {
         return list.get(i);
     }
 
@@ -40,7 +52,7 @@ public class FoodAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        FoodInformation food = (FoodInformation) getItem(i); //获取第 i 个item的数据
+        Food food = (Food) getItem(i); //获取第 i 个item的数据
         View v;
         ViewHold viewHold;
         if(view == null) {
@@ -59,19 +71,25 @@ public class FoodAdapter extends BaseAdapter {
             v = view;
             viewHold = (ViewHold) v.getTag();
         }
-        viewHold.foodImage.setImageResource(food.getImg());
-        viewHold.foodCategory.setText(food.getCategory());
-        viewHold.foodName.setText(food.getName());
-        viewHold.price.setText(food.getPrice());
+        viewHold.foodImage.setImageBitmap(food.getImage());
+        viewHold.foodCategory.setText(food.getFooCategory());
+        viewHold.foodName.setText(food.getFoodName());
+        viewHold.price.setText(food.getFoodPrice());
         viewHold.imageButton.setOnClickListener(new View.OnClickListener() { //点击对应的item中的+号，产生相应的事件
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "已添加商品:" + getItem(i).name, Toast.LENGTH_SHORT).show();
+                if(frontFood != null) {
+                    frontFood.addToShoppingCart(getItem(i));
+                }
+                else {
+                    frontDrinks.addToShoppingCart(getItem(i));
+                }
+                Toast.makeText(context, "已添加商品:" + getItem(i).getFoodName(), Toast.LENGTH_SHORT).show();
             }
         });
         return v;
     }
-    class ViewHold {
+    private class ViewHold {
         ImageView foodImage;
         TextView foodName;
         TextView foodCategory;

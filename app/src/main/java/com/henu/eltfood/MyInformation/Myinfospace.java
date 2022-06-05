@@ -2,36 +2,52 @@ package com.henu.eltfood.MyInformation;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Looper;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.henu.eltfood.DataClass.Account;
 import com.henu.eltfood.R;
-import com.henu.eltfood.util.Constant;
 
-public class Myinfospace extends AppCompatActivity {
+public class MyinfoSpace extends AppCompatActivity {
+
+    private TextView MyinfSpaceBack;
+    private TextView adname;
+    private TextView adspace;
+    private ImageView change;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myinfospace);
 
-        TextView back2 = (TextView) findViewById(R.id.back2);
-        TextView adname = (TextView) findViewById(R.id.adname);
-        TextView adspace = (TextView) findViewById(R.id.adspace);
+        InitComponent();
+        adname.setText(Account.getCurrentUser(Account.class).getNickname());
+        adspace.setText(Account.getCurrentUser(Account.class).getAddress());
 
-        adname.setText(Constant.username);
-        adspace.setText(Constant.address);
-
-        back2.setOnClickListener(new View.OnClickListener() {
+        MyinfSpaceBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it = new Intent();
                 finish();
             }
         });
+
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent it = new Intent(MyinfoSpace.this, MyinfoSpaceChange.class);
+                startActivity(it);
+
+            }
+        });
+    }
+
+    public void InitComponent(){
+        MyinfSpaceBack = (TextView) findViewById(R.id.back2);
+        adname = (TextView) findViewById(R.id.adname);
+        adspace = (TextView) findViewById(R.id.adspace);
+        change = (ImageView) findViewById(R.id.change);
     }
 }

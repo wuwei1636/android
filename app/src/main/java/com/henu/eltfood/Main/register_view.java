@@ -1,44 +1,39 @@
 package com.henu.eltfood.Main;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Looper;
-import android.telecom.TelecomManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.henu.eltfood.DataSystem.MySQLConnections;
-import com.henu.eltfood.R;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import com.google.android.material.snackbar.Snackbar;
+import com.henu.eltfood.DataClass.Account;
+import com.henu.eltfood.DataClass.AccountCount;
+import com.henu.eltfood.R;
+import com.henu.eltfood.util.EMUtil;
+
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.SaveListener;
 
 public class register_view extends AppCompatActivity {
 
-    private static Connection con = null;
-    private static PreparedStatement stmt = null;
     private TextView register_name, register_password1, register_password2;
-    boolean register_success = false;
+    private Account account; //当前注册的Account
     public Intent intent = null;
+    private AccountCount account_count;
     String name_content, password_content1, password_content2;
+    Button back_to_login, register;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_view);
+        Bmob.initialize(this, "230f0d485f24c49e8bb460514596714a");
 
-        register_name = findViewById(R.id.register_name);
-        register_password1 = findViewById(R.id.register_password1);
-        register_password2 = findViewById(R.id.register_password2);
-        Button back_to_login = findViewById(R.id.back_to_login);
-        Button register = findViewById(R.id.register);
-        intent = new Intent(register_view.this, MainActivity.class);
-
+        init_component();
         back_to_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,77 +44,72 @@ public class register_view extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new Thread(){
-                    @Override
-                    public void run() {
-                        try {
-                            con = MySQLConnections.getConnection();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        try {
-                            String sql1 = "select * from account where name=?";
-                            name_content = register_name.getText().toString();
-                            password_content1 = register_password1.getText().toString();
-                            password_content2 = register_password2.getText().toString();
-                            if (con != null) {
-                                if (name_content.equals(""))
-                                {
-                                    Looper.prepare();
-                                    Toast.makeText(register_view.this, "请填写用户名", Toast.LENGTH_LONG).show();
-                                    Looper.loop();
-                                }
-                                else{
-                                    stmt = con.prepareStatement(sql1);
-                                    stmt.setString(1, name_content);
-                                    con.setAutoCommit(false);
-                                    ResultSet rs = stmt.executeQuery();
-                                    if (rs.next()) {
-                                        Looper.prepare();
-                                        Toast.makeText(register_view.this, "该用户名已存在", Toast.LENGTH_LONG).show();
-                                        Looper.loop();
-                                    }
-                                    else if (password_content1.equals("") || password_content2.equals("")){
-                                        Looper.prepare();
-                                        Toast.makeText(register_view.this, "密码不能为空", Toast.LENGTH_LONG).show();
-                                        Looper.loop();
-                                    }
-                                    else if (!password_content1.equals(password_content2)) {
-                                        Looper.prepare();
-                                        Toast.makeText(register_view.this, "两次输入密码不同", Toast.LENGTH_LONG).show();
-                                        Looper.loop();
-                                    }
-                                    else{
-                                        String sql2 = "insert into account(name,password)  values(?,?)";
-                                        stmt = con.prepareStatement(sql2);
-                                        stmt.setString(1,name_content);
-                                        stmt.setString(2, password_content1);
-                                        con.setAutoCommit(false);
-                                        stmt.addBatch();
-                                        stmt.executeBatch();
-                                        con.commit();
+                name_content = register_name.getText().toString();
+                password_content1 = register_password1.getText().toString();
+                password_content2 = register_password2.getText().toString();
 
-                                        register_success = true;
-                                        Looper.prepare();
-                                        Toast.makeText(register_view.this, "注册成功", Toast.LENGTH_LONG).show();
-                                        Looper.loop();
-
-                                        MySQLConnections.closeResource(null,rs,stmt);
-                                    }
+                if (name_content.equals(""))
+                {
+                    show("请填写用户名");
+                }
+                else if (password_content1.equals("") || password_content2.equals("")){
+                    show("密码不能为空");
+                }
+                else if (!password_content1.equals(password_content2)) {
+                    show("两次密码不同");
+                }
+                else{
+                    account = new Account(name_content, password_content1);
+                    account.setId(account_count.cnt + 1);
+                    account.setNickname("用户" + String.valueOf(account.getId()));
+                    account.signUp(new SaveListener<Account>() {
+                        @Override
+                        public void done(Account account, BmobException e) {
+                            if (e == null) {
+                                show("注册成功");
+                                EMregister();
+                                account_count.cnt = account_count.cnt + 1;
+                                account_count.update_cnt();
+                                try {
+                                    Thread.sleep(500);
+                                } catch (InterruptedException interruptedException) {
+                                    interruptedException.printStackTrace();
                                 }
+                                register_view.this.getIntent().putExtra("name", name_content);
+                                register_view.this.getIntent().putExtra("password", password_content1);
+                                register_view.this.setResult(RESULT_OK, register_view.this.getIntent());
+                                register_view.this.finish();
+                            } else {
+                                Snackbar.make(view, "尚未失败：" + e.getMessage(), Snackbar.LENGTH_LONG).show();
                             }
                         }
-                        catch (SQLException e) {}
-                    }
-                }.start();
-                try { Thread.sleep(2000); }
-                catch (InterruptedException e){}
-                if (register_success){
-                    intent.putExtra("name",name_content);
-                    intent.putExtra("password",password_content1);
-                    startActivity(intent);
+                    });
                 }
             }
         });
     }
+
+    /**
+     * 环信用户注册
+     */
+    private void EMregister() {
+        EMUtil.EMsignup(name_content,password_content1);
+    }
+    public void init_component(){
+        register_name = findViewById(R.id.register_name);
+        register_password1 = findViewById(R.id.register_password1);
+        register_password2 = findViewById(R.id.register_password2);
+        back_to_login = findViewById(R.id.back_to_login);
+        register = findViewById(R.id.register);
+        intent = new Intent(register_view.this, MainActivity.class);
+        account_count = new AccountCount();
+        account_count.load_cnt();
+    }
+
+    public void show(String content){
+        Toast.makeText(register_view.this,content,Toast.LENGTH_LONG).show();
+    }
+
+
+
 }

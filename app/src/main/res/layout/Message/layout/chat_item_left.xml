@@ -11,14 +11,14 @@
         android:gravity="left"
         android:orientation="horizontal"
         android:layout_weight="1">
-    <ImageView
-        android:id="@+id/chat_header"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_gravity="bottom"
-        android:background="@drawable/waifu"
-        android:src="@drawable/circle_images"
-        />
+        <ImageView
+            android:id="@+id/chat_header"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/background"
+            android:src="@drawable/circle_images"
+            />
 
         <TextView
             android:id="@+id/chat_text"

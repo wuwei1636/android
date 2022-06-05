@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Front.FrontConsumerOrder"
+    tools:context=".Front.FrontConsumerOrder.FrontConsumerOrder"
     android:orientation="vertical">
 
     <LinearLayout
@@ -34,7 +34,7 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/front_listview_order"
+        android:id="@+id/consumer_order_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MyInformation.Myinfosafe">
+    tools:context=".MyInformation.MyinfoSafe">
 
     <LinearLayout
         android:background="@drawable/border2"
@@ -14,7 +14,7 @@
         android:layout_height="50dp">
 
         <TextView
-            android:id="@+id/back3"
+            android:id="@+id/MyinfSafeBack"
             android:clickable="true"
             android:text="＜"
             android:textSize="20dp"
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <EditText
-                android:id="@+id/pwd1"
+                android:id="@+id/MyinfSafePassword1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -66,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <EditText
-                android:id="@+id/pwd2"
+                android:id="@+id/MyinfSafePassword2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/mbtn3"
+            android:id="@+id/MyinfSafeSubmit"
             android:layout_marginTop="20dp"
             android:text="确认"
             android:layout_gravity="center"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MyInformation.Myinfoname">
+    tools:context=".MyInformation.MyinfoName">
 
     <LinearLayout
         android:background="@drawable/border2"
@@ -14,7 +14,7 @@
         android:layout_height="50dp">
 
         <TextView
-            android:id="@+id/back4"
+            android:id="@+id/MyinfnameBack"
             android:clickable="true"
             android:text="＜"
             android:textSize="20dp"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"/>
 
         <EditText
-            android:id="@+id/edit1"
+            android:id="@+id/MyinfNameNickNameEditText"
             android:layout_marginTop="5dp"
             android:textColor="#A9A9A9"
             android:text="玛卡巴卡"
@@ -56,7 +56,7 @@
             android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/mbtn2"
+            android:id="@+id/MyinfNameSubmit"
             android:text="确认"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"

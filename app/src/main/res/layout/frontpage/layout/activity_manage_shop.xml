@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Front.ManageShop">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="#00BFFF"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/manage_back_front"
+            android:layout_weight="3"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:src="@drawable/back"
+            android:layout_gravity="center"
+            />
+        <TextView
+            android:layout_weight="34"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="店铺管理"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/create_shop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="创建商铺" />
+
+    <ListView
+        android:id="@+id/my_shops"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+</LinearLayout>

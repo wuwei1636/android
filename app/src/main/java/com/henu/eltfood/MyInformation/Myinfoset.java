@@ -2,93 +2,59 @@ package com.henu.eltfood.MyInformation;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Looper;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.henu.eltfood.DataSystem.MySQLConnections;
+import com.henu.eltfood.DataClass.Account;
 import com.henu.eltfood.R;
-import com.henu.eltfood.pojo.User;
-import com.henu.eltfood.util.Constant;
+import com.henu.eltfood.util.ActivityCollectorUtil;
+import com.henu.eltfood.util.EMUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import cn.bmob.v3.BmobUser;
 
-public class Myinfoset extends AppCompatActivity {
+;
 
-    Connection con;
-    PreparedStatement stmt = null;
-    String sql = null;
-    String sql1 = null;
-    User user = null;
+public class MyinfoSet extends AppCompatActivity {
 
+    private TextView MyinfSetNickName;
+    private TextView MyinfSetBack;
+    private LinearLayout nsafe;
+    private LinearLayout nnmame;
+    private LinearLayout nspace;
+    private Button MyinfSetLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_myinfoet);
+        setContentView(R.layout.activity_myinfoset);
+        ActivityCollectorUtil.addActivity(MyinfoSet.this);
 
-        TextView tex1 = super.findViewById(R.id.tex1);
+        InitComponent();
+        MyinfSetNickName.setText(BmobUser.getCurrentUser(Account.class).getNickname());
 
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try{
-                    con = MySQLConnections.getConnection();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                try{
-                    sql = "select * from account where name = ?";
-                    stmt = con.prepareStatement(sql);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-                try{
-                    stmt.setString(1,Constant.name);
-                    ResultSet rs = stmt.executeQuery();
-                    while(rs.next()){
-                        user = new User();
-                        user.setId((rs.getInt("id")));
-                        user.setUsername((rs.getString("name")));
-                        user.setPassword((rs.getString("password")));
-                        user.setUsername2((rs.getString("username")));
-                    }
-                    String name2 = user.getUsername2();
-                    tex1.setText(name2);
-
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-
-
-                MySQLConnections.closeResource(con,null,null);
-            }
-        }).start();
-
-        // 账号安全  昵称  收货地址
-        TextView back1 = (TextView)findViewById(R.id.back1);
-        LinearLayout nsafe = (LinearLayout) findViewById(R.id.nsafe);
-        LinearLayout nnmame = (LinearLayout) findViewById(R.id.nname);
-        LinearLayout nspace = (LinearLayout) findViewById(R.id.nplace);
-
-        back1.setOnClickListener(new View.OnClickListener() {
+        MyinfSetLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it0 = Myinfoset.super.getIntent();
+                EMUtil.loginOut();
+                BmobUser.logOut();
+                ActivityCollectorUtil.finishAllActivity();
+            }
+        });
+        MyinfSetBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 finish();
             }
         });
         nsafe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it1 = new Intent(Myinfoset.this,Myinfosafe.class);
+                Intent it1 = new Intent(MyinfoSet.this, MyinfoSafe.class);
                 startActivity(it1);
             }
         });
@@ -96,20 +62,34 @@ public class Myinfoset extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-
-
-                Intent it2 = new Intent(Myinfoset.this,Myinfoname.class);
+                Intent it2 = new Intent(MyinfoSet.this, MyinfoName.class);
                 startActivity(it2);
             }
         });
         nspace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent it3 = new Intent(Myinfoset.this,Myinfospace.class);
+                Intent it3 = new Intent(MyinfoSet.this, MyinfoSpace.class);
                 startActivity(it3);
             }
         });
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityCollectorUtil.removeActivity(MyinfoSet.this);
+    }
+
+    public void InitComponent(){
+        // 账号安全  昵称  收货地址
+        MyinfSetNickName = super.findViewById(R.id.tex1);
+        MyinfSetBack = (TextView)findViewById(R.id.back1);
+        nsafe = (LinearLayout) findViewById(R.id.nsafe);
+        nnmame = (LinearLayout) findViewById(R.id.nname);
+        nspace = (LinearLayout) findViewById(R.id.nplace);
+        MyinfSetLogout = this.findViewById(R.id.mbtn1);
+    }
+
 }

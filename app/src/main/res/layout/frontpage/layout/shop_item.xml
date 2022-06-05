@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/manageShopImg"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="@drawable/edittext_shape"
+            />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:layout_width="230dp"
+                android:id="@+id/manageShopName"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="甜品铺子"
+                android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/manageShopGrade"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:text=" 4.7分 "
+                android:textSize="15dp"
+                android:textColor="#FF9800"
+                android:layout_marginBottom="3dp"/>
+            <TextView
+                android:id="@+id/manageShopPrice"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:text="起送￥15  配送￥3"
+                android:layout_marginBottom="3dp"
+                android:textSize="15dp"/>
+
+        </LinearLayout>
+        <TextView
+            android:drawableLeft="@drawable/delete_this_shop"
+            android:id="@+id/delete_this_shop"
+            android:layout_gravity="bottom"
+            android:layout_width="0dp"
+            android:layout_weight="1.2"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="#FFFFFF"
+            android:text="删除" />
+    </LinearLayout>
+</LinearLayout>

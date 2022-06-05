@@ -60,13 +60,6 @@
                 android:text="待收货"
                 android:gravity="center"/>
             <TextView
-                android:id="@+id/id4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="待使用"
-                android:gravity="center"/>
-            <TextView
                 android:id="@+id/id5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

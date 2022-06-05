@@ -24,7 +24,6 @@ public class OrderActivity extends Fragment {
     Fragment1 r1;
     Fragment2 r2;
     Fragment3 r3;
-    Fragment4 r4;
     Fragment5 r5;
     Fragment6 r6;
     @Nullable
@@ -34,19 +33,16 @@ public class OrderActivity extends Fragment {
         TextView t1 = view.findViewById(R.id.id1);
         TextView t2 = view.findViewById(R.id.id2);
         TextView t3 = view.findViewById(R.id.id3);
-        TextView t4 = view.findViewById(R.id.id4);
         TextView t5 = view.findViewById(R.id.id5);
         TextView t6 = view.findViewById(R.id.id6);
         r1 = new Fragment1();
         r2 = new Fragment2();
         r3 = new Fragment3();
-        r4 = new Fragment4();
         r5 = new Fragment5();
         r6 = new Fragment6();
         t1.setOnClickListener(PageButtonAction);
         t2.setOnClickListener(PageButtonAction);
         t3.setOnClickListener(PageButtonAction);
-        t4.setOnClickListener(PageButtonAction);
         t5.setOnClickListener(PageButtonAction);
         t6.setOnClickListener(PageButtonAction);
         android.app.FragmentManager fm = getFragmentManager();
@@ -72,9 +68,6 @@ public class OrderActivity extends Fragment {
                     break;
                 case R.id.id3:
                     f = r3;
-                    break;
-                case R.id.id4:
-                    f = r4;
                     break;
                 case R.id.id5:
                     f = r5;

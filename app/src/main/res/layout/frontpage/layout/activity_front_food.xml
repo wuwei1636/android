@@ -9,55 +9,143 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal"
-        android:background="#00BFFF">
-
-        <ImageView
-            android:id="@+id/food_back_home"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/back"
-            android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            />
-
-        <TextView
+        android:layout_height="200dp"
+        android:orientation="vertical"
+        android:background="@drawable/background_gradient">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="-40dp"
-            android:gravity="center"
-            android:text="美食"
-            android:textSize="17sp"
-            android:textStyle="bold"/>
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:padding="10dp">
+            <ImageView
+                android:id="@+id/food_back_home"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/back"
+                android:layout_gravity="center"
+                />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="5dp"
+                android:text="美食外卖"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/sear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edittext_shape"
+                android:iconifiedByDefault="false"
+                app:queryHint="外卖" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical"
+                android:background="@drawable/card_shape">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:padding="10dp"
+                        android:text="你的专属美食推荐"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="12dp"
+                        android:text="更多精品>>  "/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp">
+
+                    <TextView
+                        android:id="@+id/front_son_mian"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:drawableTop="@drawable/niuroumian"
+                        android:text="美食外卖"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/front_son_rou"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:drawableTop="@drawable/dapanji"
+                        android:text="大盘鸡"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/front_son_soup"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2"
+                        android:drawableTop="@drawable/darksoup"
+                        android:text="鲜香鸭汤"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#ffffff">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#eeeeee"
+            >
 
             <Button
                 android:id="@+id/main_food"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="主食"/>
+                android:text="主食"
+                android:background="@drawable/btn_selector"/>
             <Button
                 android:id="@+id/dish"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="小菜"/>
+                android:text="小菜"
+                android:background="@drawable/btn_selector"/>
             <Button
                 android:id="@+id/little_food"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:text="小吃"/>
+                android:text="小吃"
+                android:background="@drawable/btn_selector"/>
         </LinearLayout>
 
         <ListView

@@ -3,27 +3,24 @@ package com.henu.eltfood.Recommend;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.henu.eltfood.Message.chat.ChatActivity;
 import com.henu.eltfood.R;
+import com.henu.eltfood.util.EMUtil;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.zip.Inflater;
 
 public class MyStaggeredGridLayoutAdapter extends RecyclerView.Adapter {
-    private OnItemClickListener mListener;//声明一个接口的引用;
+//    private OnItemClickListener mListener;//声明一个接口的引用;
     private Context Mycontext;
     private ArrayList<Recycler_Item> Mydata;
     MyStaggeredGridLayoutAdapter (Context tp1, ArrayList<Recycler_Item> tp2){
@@ -42,17 +39,34 @@ public class MyStaggeredGridLayoutAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         Recycler_Item data_item = Mydata.get(position);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.onClick(Mycontext, position);
-//                Mycontext.startActivity(new Intent(Mycontext,ShopOnline.class));
-//                Toast.makeText(Mycontext, "asknd", Toast.LENGTH_SHORT).show();
+//                mListener.onClick(Mycontext, position);
+
+                Intent intent = new Intent(Mycontext, ShopOnline.class);
+                intent.putExtra("ShopName", Mydata.get(position).ShopName);
+                intent.putExtra("shopId", Mydata.get(position).shopId);
+                Mycontext.startActivity(intent);
             }
         });
-        myViewHolder.MyImageView.setImageResource(data_item.image_source);
-//        myViewHolder.MyImageView.getLayoutParams().height = (200 + new Random().nextInt(500));
-        myViewHolder.MyTextView.setText(data_item.textview_content);
+        myViewHolder.ShopCustomerService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    String toChatUsername = data_item.ShopOwner;
+                    EMUtil.addFriend(toChatUsername);
+                    Intent intent = new Intent(Mycontext, ChatActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("username",toChatUsername);
+                    intent.putExtras(bundle);
+                    Mycontext.startActivity(intent);
+            }
+        });
+        myViewHolder.ShopImg.setImageBitmap(data_item.ShopImg);
+        myViewHolder.ShopName.setText(data_item.ShopName);
+        myViewHolder.ShopGrade.setText(data_item.ShopGrade);
+        myViewHolder.ShopComment.setText(data_item.ShopComment);
+        myViewHolder.ShopPrice.setText(data_item.ShopPrice);
     }
 
     @Override
@@ -60,21 +74,25 @@ public class MyStaggeredGridLayoutAdapter extends RecyclerView.Adapter {
         if (Mydata != null) return Mydata.size();
         return 0;
     }
-    public class MyViewHolder extends RecyclerView.ViewHolder {
-        public ImageView MyImageView;
-        public TextView MyTextView;
+    class MyViewHolder extends RecyclerView.ViewHolder {
+
+        public ImageView ShopImg;
+        public TextView ShopName;
+        public TextView ShopGrade;
+        public TextView ShopPrice;
+        public TextView ShopComment;
+        public TextView ShopCustomerService;
+
         public MyViewHolder(View itemView) {
             super(itemView);
-            MyImageView = (ImageView) itemView.findViewById(R.id.imageView);
-            MyTextView = (TextView) itemView.findViewById(R.id.textView);
+            ShopImg = (ImageView) itemView.findViewById(R.id.ShopImg);
+            ShopName = (TextView) itemView.findViewById(R.id.ShopName);
+            ShopGrade = (TextView) itemView.findViewById(R.id.ShopGrade);
+            ShopPrice = (TextView) itemView.findViewById(R.id.ShopPrice);
+            ShopComment = (TextView) itemView.findViewById(R.id.ShopComment);
+            ShopCustomerService = (TextView) itemView.findViewById(R.id.ShopCustomerService);
         }
     }
 
-    public  void setOnItemClickListner(OnItemClickListener onItemClickListner){
-        this.mListener=onItemClickListner;
-    }
-    public interface OnItemClickListener {
-        void onClick(Context context, int pos);
-    }
 }
 

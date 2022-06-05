@@ -10,28 +10,76 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@color/teal_200"
-        app:cardCornerRadius="40dp"
-        app:contentPadding="10dp">
+        app:cardCornerRadius="8dp"
+        android:layout_margin="5dp"
+        android:foreground="?android:attr/selectableItemBackground">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="130dp"
+            android:padding="5dp">
+
             <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:id="@+id/ShopImg"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
-                app:srcCompat="@drawable/a1" />
+                app:srcCompat="@drawable/shop"
+                android:background="@drawable/edittext_shape"
+                />
 
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp">
+
+                <TextView
+                    android:layout_width="230dp"
+                    android:id="@+id/ShopName"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="甜品铺子"
+                    android:textSize="20dp"/>
+                <TextView
+                    android:id="@+id/ShopGrade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:text=" 4.7分 "
+                    android:textSize="15dp"
+                    android:textColor="#FF9800"
+                    android:layout_marginBottom="3dp"/>
+                <TextView
+                    android:id="@+id/ShopPrice"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:text="起送￥15  配送￥3"
+                    android:layout_marginBottom="3dp"
+                    android:textSize="15dp"/>
+
+                <TextView
+                    android:id="@+id/ShopComment"
+                    android:layout_width="wrap_content"
+                    android:padding="3dp"
+                    android:layout_height="wrap_content"
+                    android:background="#FFC68F"
+                    android:text="非常好吃，下次还来"
+                    android:textColor="#ffffff"/>
+
+            </LinearLayout>
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
+                android:drawableLeft="@drawable/kefu"
+                android:id="@+id/ShopCustomerService"
+                android:layout_gravity="bottom"
+                android:layout_width="0dp"
+                android:layout_weight="1.2"
                 android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textSize="35dp" />
-
+                android:padding="5dp"
+                android:background="#FFFFFF"
+                android:text="客服" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

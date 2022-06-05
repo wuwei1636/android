@@ -1,12 +1,14 @@
 package com.henu.eltfood.Message;
 
+import android.graphics.Bitmap;
+
 public class ContactPerson {
     private String name = "None";
-    private String last_massage = "None";
-    private String last_massage_time = "XX:XX";
-    private int header ;
+    private String last_massage = "";
+    private String last_massage_time = "";
+    private Bitmap header ;
 
-    public ContactPerson(String name, String last_massage, String last_massage_time, int header) {
+    public ContactPerson(String name, String last_massage, String last_massage_time, Bitmap header) {
         this.name = name;
         this.last_massage = last_massage;
         this.last_massage_time = last_massage_time;
@@ -32,11 +34,11 @@ public class ContactPerson {
         this.last_massage = last_massage;
     }
 
-    public int getHeader() {
+    public Bitmap getHeader() {
         return header;
     }
 
-    public void setHeader(int header) {
+    public void setHeader(Bitmap header) {
         this.header = header;
     }
 

@@ -1,8 +1,6 @@
 package com.henu.eltfood.MyInformation;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,90 +9,67 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.henu.eltfood.DataSystem.MySQLConnections;
-import com.henu.eltfood.Main.register_view;
+import com.google.android.material.snackbar.Snackbar;
+import com.henu.eltfood.DataClass.Account;
 import com.henu.eltfood.R;
-import com.henu.eltfood.util.Constant;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UpdateListener;
 
-public class Myinfoname extends AppCompatActivity  {
-    Connection con;
-    PreparedStatement stmt = null;
-    String sql = null;
-    String sql1 = null;
+public class MyinfoName extends AppCompatActivity  {
+
+    private EditText MyinfNameNickNameEditText;
+    private TextView MyinfNameBack;
+    private Button MyinfNameSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_myinfoname);
 
-        EditText editq = super.findViewById(R.id.edit1);
-        TextView back4 = super.findViewById(R.id.back4);
-        Button btn2 = super.findViewById(R.id.mbtn2);
+        InitComponent();
 
-        editq.setText(Constant.username);
-        back4.setOnClickListener(new View.OnClickListener() {
+        MyinfNameNickNameEditText.setText(Account.getCurrentUser(Account.class).getNickname());
+        MyinfNameBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent();
                 finish();
             }
         });
 
-        btn2.setOnClickListener(new View.OnClickListener() {
+        MyinfNameSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        try{
-                            con = MySQLConnections.getConnection();
-                        }catch (Exception e){
-                            Looper.prepare();
-                            Toast.makeText(Myinfoname.this, "连接数据库失败", Toast.LENGTH_LONG).show();
-                            Looper.loop();
-                            e.printStackTrace();
-                        }
-                        try{
-                            sql1 = "update account set username = ? where id = ?";
-                            sql = "select count(1) as sl from text";
-                            stmt = con.prepareStatement(sql1);
-                        }catch (Exception e){
-                            Looper.prepare();
-                            Toast.makeText(Myinfoname.this, "预编译失败", Toast.LENGTH_LONG).show();
-                            Looper.loop();
-                            e.printStackTrace();
-                        }
-                        try{
-                            String fir = editq.getText().toString();
-                            stmt.setString(1,fir);
-                            stmt.setInt(2, Constant.id);
-                            int rs = stmt.executeUpdate();
-                            if(rs > 0){
-                                Looper.prepare();
-                                Toast.makeText(Myinfoname.this,"修改成功", Toast.LENGTH_LONG).show();
-                                Looper.loop();
+                String NickName = MyinfNameNickNameEditText.getText().toString();
+                if (NickName.equals("")){
+                    show("昵称不能为空");
+                }
+                else{
+                    Account currentuser = Account.getCurrentUser(Account.class);
+                    currentuser.setNickname(NickName);
+                    currentuser.update(new UpdateListener() {
+                        @Override
+                        public void done(BmobException e) {
+                            if (e == null){
+                                Snackbar.make(view, "昵称修改成功" , Snackbar.LENGTH_LONG).show();
                             }
                             else{
-                                Looper.prepare();
-                                Toast.makeText(Myinfoname.this, "修改失败", Toast.LENGTH_LONG).show();
-                                Looper.loop();
+                                Snackbar.make(view, "昵称修改失败" , Snackbar.LENGTH_LONG).show();
                             }
-
-                        }catch (Exception e){
-                            Looper.prepare();
-                            Toast.makeText(Myinfoname.this, "获取失败", Toast.LENGTH_LONG).show();
-                            Looper.loop();
-                            e.printStackTrace();
                         }
-                    MySQLConnections.closeResource(con,null,null);
-                    }
-                }).start();
+                    });
+                }
             }
         });
+    }
 
+    public void InitComponent(){
+        MyinfNameNickNameEditText = this.findViewById(R.id.MyinfNameNickNameEditText);
+        MyinfNameBack = this.findViewById(R.id.MyinfnameBack);
+        MyinfNameSubmit = this.findViewById(R.id.MyinfNameSubmit);
+    }
+
+    public void show(String content){
+        Toast.makeText(MyinfoName.this,content,Toast.LENGTH_LONG).show();
     }
 }

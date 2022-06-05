@@ -8,26 +8,36 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="55dp" >
+        android:layout_height="55dp"
+        android:background="@color/bgblue"
+        android:orientation="horizontal"
+        >
         <TextView
+            android:id="@+id/xiaoxi"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="消息"
             android:gravity="center"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:background="@color/bgblue"/>
+            />
 
     </LinearLayout>
-
-    <ListView
-        android:id="@+id/contact_list"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:divider="@null"
-        android:dividerHeight="7dp"
         android:layout_height="match_parent"
-        tools:listitem="@layout/message_item"
-        />
+        android:orientation="horizontal"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/contact_list"
+            android:layout_width="match_parent"
+            android:divider="@null"
+            android:dividerHeight="10dp"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/message_item"
+            />
+    </LinearLayout>
+
 
     <!--    <ImageView-->
     <!--        android:layout_width="match_parent"-->

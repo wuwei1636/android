@@ -40,21 +40,6 @@
         android:hint="请再次输入密码"
         android:background="@drawable/login_edit" />
 
-    <EditText
-        android:layout_width="130dp"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="50dp"
-        android:layout_marginTop="410dp"
-        android:hint="验证码"
-        android:background="@drawable/login_edit" />
-    <ImageView
-        android:layout_width="130dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="410dp"
-        android:layout_marginLeft="230dp"
-        android:src="@color/purple_200"
-        />
-
     <Button
         android:id="@+id/back_to_login"
         android:layout_width="140dp"
